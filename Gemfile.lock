@@ -1,0 +1,21 @@
+PATH
+  remote: .
+  specs:
+    httpTimer (0.0.1)
+      curb
+      floatstats
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    curb (0.8.4)
+    floatstats (0.2.1)
+    rake (10.1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.3)
+  httpTimer!
+  rake

@@ -1,0 +1,57 @@
+#!/usr/bin/env ruby
+
+# This ruby script runs the httpTimer and then prints the results to 
+# stdout.
+
+require 'rubygems' unless defined?(Gem);
+require 'bundler/setup';
+
+require 'optparse';
+require 'yaml';
+require 'httpTimer';
+
+defaultOptions = Hash.new();
+defaultOptions['verbose']      = false;
+defaultOptions['randomize']    = -1;
+defaultOptions['replications'] = 10;
+defaultOptions['delay']        = 1.0;
+
+cmdOptions = Hash.new();
+
+OptionParser.new do | opts |
+
+  opts.banner = "Usage: httpTimer [options] CONFIG_FILE";
+
+  opts.on("-r", "--repl REPLICATIONS", "The default number of replications to perform of each url-hash-key x url combination") do | opt |
+    cmdOptions['replications'] = opt.to_i;
+  end
+
+  opts.on("-R", "--rand RANDOM_SEED", "The (integer) random seed, zero for no randomization, negative to use the current time as the random seed") do | opt |
+    cmdOptions['randomize'] = opt.to_i;
+  end
+
+  opts.on("-d", "--delay DELAY_SECONDS", "The (float) number of seconds to delay between each request, if zero or negative then no delay will be used") do | opt |
+    cmdOptions['delay'] = opt.to_f;
+  end
+
+  opts.on("-v", "--[no-]verbose", "Toggle verbose output to stdout (default: false)") do | opt |
+    cmdOptions['verbose'] = opt;
+  end
+
+end.parse!(ARGV)
+
+ARGV.each do | configFile |
+  if File.exists?(configFile) then
+    config = YAML::load_file(configFile);
+    config = defaultOptions.merge(config);
+    config.merge!(cmdOptions);
+    timings = HttpTimer.run(configFile, config);
+    puts "\n\nrequestGroupName, minConnTime, meanConnTime, medianConnTime, maxConnTime, stdDevConnTime";
+    timings.each_pair do | key, results |
+      puts "#{key}, #{results.join(', ')}";
+    end
+    puts "\n\n";
+  else
+    puts "Warning: the httpTimer configuration file [#{configFile}] does not exist...";
+  end
+end

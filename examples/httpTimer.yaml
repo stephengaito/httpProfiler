@@ -1,0 +1,65 @@
+# This is a simple (ruby) YAML file which determines what the 
+# httpTimer should time, and how it should go about conducting the 
+# timings.
+
+# Many websites will require logins and will store session and login 
+# information in one or more cookies. SO we ensure any cookies defined 
+# in this section are obtained before attempting to visit any of the 
+# mail urls below.
+#
+# The cookies themselves are stored in the "cookies" hash with 
+# arbitrary hash keys (used below to reference the cookies).
+#
+# Each cookie is really a simple string of key=value pairs extracted 
+# from the result of visiting the corresponding url.
+#
+cookies: {}
+
+# The collection of urls to be visited are listed in the urls hash.
+#
+requestGroups:
+  fandianPF:
+    urls: 
+      - http://github.com/fandianpf/fandianpf
+      - http://github.com/fandianpf/fandianpf/wiki/Home
+      - http://github.com/fandianpf/fandianpf/issues
+  httpTimer:
+    urls: 
+      - http://github.com/stephengaito/httptimer
+      - http://github.com/stephengaito/httptimer/issues
+
+# The randomize int determines whether or not to visit the urls in a 
+# deterministic sequential (lexigraphical) order (by hash key and url) 
+# or to visit them in a random order.
+#
+# If the randomize int is zero then no randomization will take place. 
+# If the randomize int is negative, then the randomization seed will 
+# be taken from the current time. If the randomize int is positive, 
+# than that number will be used as the randomization seed.
+#
+randomize: -1
+
+# The replication int determines the global default number of 
+# replications for each hash key, url provided.
+#
+replications: 10
+
+# The delay float determines how many seconds to wait between requests.
+#
+# A negative or zero value means there will be no delay between requests.
+#
+delay: 0.5
+
+# Headers is a hash of key value pairs to provide as default headers 
+# for each request.
+#
+# This hash will be merged with corresponding headers hashes contained 
+# in the urls structure.
+#
+headers: 
+  User-Agent: httpTimer
+
+# Verbose is a boolean which specifies if extra verbose output should 
+# be sent to the stdout.
+#
+verbose: true
