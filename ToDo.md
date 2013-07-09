@@ -11,4 +11,7 @@ urls in order to implement typcial login behaviour.
 
 ## Low priority
 
-Nothing at the moment.
+ 1. Allow the collection of metrics to be driven by meta-data, by 
+"sending" a method name to the Curl response object and processing the 
+result in a provided block. Allow the resulting metrics to be named by 
+hash-keys.
