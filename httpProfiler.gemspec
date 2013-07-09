@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'httpTimer/version'
+require 'httpProfiler'
 
 Gem::Specification.new do |spec|
-  spec.name          = "httpTimer"
-  spec.version       = HttpTimer::VERSION
+  spec.name          = "httpProfiler"
+  spec.version       = HttpProfiler::VERSION
   spec.authors       = ["Stephen Gaito"]
   spec.email         = ["stephen@perceptisys.co.uk"]
   spec.description = %q{Run simple (sequencial) tests on a collection 
@@ -13,7 +13,7 @@ of urls to determine average, stardard deviation and median connection
 times}
   spec.summary = %q{Run simple (sequential) tests on a collection of 
 urls}
-  spec.homepage      = "https://github.com/stephengaito/httpTimer"
+  spec.homepage      = "https://github.com/stephengaito/httpProfiler"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)

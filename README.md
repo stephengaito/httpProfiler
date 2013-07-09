@@ -1,6 +1,6 @@
-# HttpTimer
+# HttpProfiler
 
-HttpTimer uses [curb](https://github.com/taf2/curb) and 
+HttpProfiler uses [curb](https://github.com/taf2/curb) and 
 [floatstats](https://github.com/fizquierdo/floatstats) to compute 
 connection time statistics for configurable collections of webserver 
 urls.
@@ -9,7 +9,7 @@ urls.
 
 Add this line to your application's Gemfile:
 
-    gem 'httpTimer'
+    gem 'httpProfiler'
 
 And then execute:
 
@@ -17,7 +17,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install httpTimer
+    $ gem install httpProfiler
 
 ## Usage
 
@@ -25,17 +25,17 @@ Or install it yourself as:
 
 For help type:
 
-> httpTimer --help
+> httpProfiler --help
 
 Invoking the example YAML configuration file:
 
-> httpTimer $HTTP_TIMER_GEM/examples/httpTimer.yaml
+> httpProfiler $HTTP_TIMER_GEM/examples/httpProfiler.yaml
 
 ### Library
 
-> require 'httpTimer'
+> require 'httpProfiler'
 
-> results = HttpTimer.run(configFileName, configHash);
+> results = HttpProfiler.run(configFileName, configHash);
 > results.each_pair do | requestGroupName, requestGroupResults |
 >   puts "#{requestGroupName}, #{requestGroupResults.join(', ')}";
 > end
@@ -45,7 +45,7 @@ the configHash, and whose results are the curb derived connection time
 min, average, median, maximum and stardard deviations for all of the 
 urls in each requestGroup.
 
-See the $HTTP_TIMER_GEM/examples/httpTimer.yaml file for documentation 
+See the $HTTP_TIMER_GEM/examples/httpProfiler.yaml file for documentation 
 of the configuration options.
 
 ## Contributing

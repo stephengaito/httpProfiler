@@ -1,7 +1,8 @@
 PATH
   remote: .
   specs:
-    httpTimer (0.0.1)
+    httpProfiler (0.0.1)
+      bundler (~> 1.3)
       curb
       floatstats
 
@@ -17,5 +18,5 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.3)
-  httpTimer!
+  httpProfiler!
   rake

@@ -1,8 +1,9 @@
-require "httpTimer/version"
+#require "httpProfiler/version"
 require 'curb';
 require 'floatstats';
 
-module HttpTimer
+module HttpProfiler
+  VERSION = "0.0.1";
 
   class Runner
 
@@ -81,7 +82,7 @@ module HttpTimer
   end
 
   def self.run(configFile, config)
-    runner = HttpTimer::Runner.new(configFile, config);
+    runner = HttpProfiler::Runner.new(configFile, config);
     runner.run;
   end
 

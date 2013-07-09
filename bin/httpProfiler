@@ -1,14 +1,14 @@
 #!/usr/bin/env ruby
 
-# This ruby script runs the httpTimer and then prints the results to 
-# stdout.
+# This ruby script runs the httpProfiler and then prints the results 
+# to stdout.
 
 require 'rubygems' unless defined?(Gem);
 require 'bundler/setup';
 
 require 'optparse';
 require 'yaml';
-require 'httpTimer';
+require 'httpProfiler';
 
 defaultOptions = Hash.new();
 defaultOptions['verbose']      = false;
@@ -20,7 +20,7 @@ cmdOptions = Hash.new();
 
 OptionParser.new do | opts |
 
-  opts.banner = "Usage: httpTimer [options] CONFIG_FILE";
+  opts.banner = "Usage: httpProfiler [options] CONFIG_FILE";
 
   opts.on("-r", "--repl REPLICATIONS", "The default number of replications to perform of each url-hash-key x url combination") do | opt |
     cmdOptions['replications'] = opt.to_i;
@@ -45,13 +45,13 @@ ARGV.each do | configFile |
     config = YAML::load_file(configFile);
     config = defaultOptions.merge(config);
     config.merge!(cmdOptions);
-    timings = HttpTimer.run(configFile, config);
+    timings = HttpProfiler.run(configFile, config);
     puts "\n\nrequestGroupName, minConnTime, meanConnTime, medianConnTime, maxConnTime, stdDevConnTime";
     timings.each_pair do | key, results |
       puts "#{key}, #{results.join(', ')}";
     end
     puts "\n\n";
   else
-    puts "Warning: the httpTimer configuration file [#{configFile}] does not exist...";
+    puts "Warning: the httpProfiler configuration file [#{configFile}] does not exist...";
   end
 end

@@ -1,5 +1,5 @@
 # This is a simple (ruby) YAML file which determines what the 
-# httpTimer should time, and how it should go about conducting the 
+# httpProfiler should time, and how it should go about conducting the 
 # timings.
 
 # Many websites will require logins and will store session and login 
@@ -23,10 +23,10 @@ requestGroups:
       - http://github.com/fandianpf/fandianpf
       - http://github.com/fandianpf/fandianpf/wiki/Home
       - http://github.com/fandianpf/fandianpf/issues
-  httpTimer:
+  httpProfiler:
     urls: 
-      - http://github.com/stephengaito/httptimer
-      - http://github.com/stephengaito/httptimer/issues
+      - http://github.com/stephengaito/httpProfiler
+      - http://github.com/stephengaito/httpProfiler/issues
 
 # The randomize int determines whether or not to visit the urls in a 
 # deterministic sequential (lexigraphical) order (by hash key and url) 
@@ -57,7 +57,7 @@ delay: 0.5
 # in the urls structure.
 #
 headers: 
-  User-Agent: httpTimer
+  User-Agent: httpProfiler
 
 # Verbose is a boolean which specifies if extra verbose output should 
 # be sent to the stdout.
